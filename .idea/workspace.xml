@@ -2,20 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9cbbce78-c139-474c-be7d-58720060e576" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.expo-shared/assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/adaptive-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/splash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/Test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/tabs/CategoryTab.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/tabs/HowTab.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/tabs/MainTab.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/tabs/SettingTab.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/tabs/UserTab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +43,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Expo/expo-learning",
+    "last_opened_file_path": "C:/Expo/lan-app",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -75,6 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1651641534806</updated>
       <workItem from="1651641535996" duration="10078000" />
+      <workItem from="1651660860428" duration="1958000" />
     </task>
     <servers />
   </component>
