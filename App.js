@@ -1,16 +1,17 @@
-import {SafeAreaView} from "react-native";
+import {SafeAreaView,StyleSheet} from "react-native";
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import Home from "./screens/Home";
 import Test from "./screens/Test";
 import Login from "./screens/Login";
+import {StatusBar} from "expo-status-bar";
+import Constants from "expo-constants";
 const Stack = createNativeStackNavigator();
 const App = () => {
     return (
-        <SafeAreaView style={{flex:1}}>
+        <SafeAreaView style={styles.main}>
            <NavigationContainer>
                <Stack.Navigator initialRouteName="Login">
-
                    <Stack.Screen
                         name={"Home"}
                         component = {Home}
@@ -30,5 +31,9 @@ const App = () => {
         </SafeAreaView>
     );
 }
-
+const styles = StyleSheet.create({
+    main:{
+        flex:1,
+    }
+})
 export default App;

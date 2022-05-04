@@ -8,6 +8,7 @@ import CategoryTab from "./tabs/CategoryTab";
 import UserTab from "./tabs/UserTab";
 import SettingTab from "./tabs/SettingTab";
 import { Ionicons } from '@expo/vector-icons';
+import Constants from "expo-constants";
 
 const Tab = createBottomTabNavigator();
 const Home = () =>{
@@ -96,6 +97,7 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:"center",
         alignItems:"center",
+        paddingTop:Constants.statusBarHeight +12
 
     },
     text:{

@@ -4,12 +4,10 @@ import {TextInput} from "react-native";
 import {Image} from "react-native";
 import {TouchableOpacity} from "react-native";
 import {useState} from "react";
-
-const logo_link = 'https://scontent.fhan3-2.fna.fbcdn.net/v/t39.30808-6/277745309_507344067466888_4075575233291622886_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=vWjcky3U4pcAX-P95lN&_nc_ht=scontent.fhan3-2.fna&oh=00_AT_xUo-3nTV5PU7blxqr9tmDHGwLBTN3e97XSzhkjBXpAg&oe=62771E00';
+const logo_link = process.env["LOGO_URL"];
 const Login = ({navigation}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [isSubmit, setIsSubmit] = useState(true);
     const submit = () => {
         if(username==="") alert("Nhập user name")
         else if(password==="") alert("Nhập password")
