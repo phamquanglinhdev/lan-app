@@ -4,14 +4,16 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import Home from "./screens/Home";
 import Test from "./screens/Test";
 import Login from "./screens/Login";
-import {StatusBar} from "expo-status-bar";
-import Constants from "expo-constants";
+import {LogBox} from "react-native";
+
 const Stack = createNativeStackNavigator();
 const App = () => {
+    LogBox.ignoreLogs(["Non"])
+    // LogBox.ignoreAllLogs();
     return (
         <SafeAreaView style={styles.main}>
            <NavigationContainer>
-               <Stack.Navigator initialRouteName="Login">
+               <Stack.Navigator initialRouteName="Home">
                    <Stack.Screen
                         name={"Home"}
                         component = {Home}

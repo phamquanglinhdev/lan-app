@@ -1,20 +1,21 @@
-import {Text,View,StyleSheet} from "react-native";
+import {Text, View, StyleSheet, Alert, BackHandler} from "react-native";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 
 import MainTab from "./tabs/MainTab";
-import HowTab from "./tabs/HowTab";
 import {NavigationContainer} from "@react-navigation/native";
 import CategoryTab from "./tabs/CategoryTab";
 import UserTab from "./tabs/UserTab";
 import SettingTab from "./tabs/SettingTab";
 import { Ionicons } from '@expo/vector-icons';
 import Constants from "expo-constants";
+import React, {useEffect} from "react";
 
 const Tab = createBottomTabNavigator();
-const Home = () =>{
+const Home = ({navigation}) =>{
     return(
         <NavigationContainer independent={true}>
             <Tab.Navigator
+                initialRouteName="MainTab"
                 screenOptions={({ route }) => ({
                     tabBarActiveTintColor: '#830252',
                     tabBarInactiveTintColor: 'gray',
@@ -23,6 +24,9 @@ const Home = () =>{
                 <Tab.Screen
                     name="MainTab"
                     component={MainTab}
+                    initialParams={{
+                        navHome:{navigation},
+                    }}
                     options={{
                         headerShown: false,
                         tabBarLabel: "Trang chủ",
@@ -74,6 +78,7 @@ const Home = () =>{
                     name="SettingTab"
                     component={SettingTab}
                     options={{
+
                         headerShown: false,
                         tabBarLabel: "Cài đặt",
                         tabBarIcon: (tabInfo) => {

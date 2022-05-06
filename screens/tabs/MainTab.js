@@ -1,31 +1,49 @@
-import {Text, View, StyleSheet} from "react-native";
+import {Text, View, StyleSheet, Alert, BackHandler} from "react-native";
 import OptionBox from "../../components/OptionBox";
-import {HeaderHeightContext} from "react-native-screens/native-stack";
 import {SafeAreaView} from "react-native";
-import Constants from "expo-constants";
+import SearchBar from "../../components/SearchBar";
+import MainContentArea from "../../components/MainContentArea";
+import {tabs} from "./Style";
+import {useEffect, useState} from "react";
+import * as SecureStore from 'expo-secure-store';
+import axios, {Axios} from "axios";
 
-const MainTab = () => {
+const MainTab = ({route, navigation}) => {
+    const [userData,setUserData]=useState({})
+    useEffect(async () => {
+        const token = await SecureStore.getItemAsync("token");
+        console.log(token)
+        if (token == null) {
+            route.params.navHome.navigation.navigate("Login")
+        } else {
+            console.log(process.env.API_URL)
+            axios({
+                baseURL: process.env.API_URL,
+                method: 'GET',
+                url: 'user',
+                headers: {
+                    "Authorization": token,
+                }
+            }).then(function (response) {
+                console.log(response.data);
+                setUserData(response.data)
+            }).catch(function (){
+                route.params.navHome.navigation.navigate("Login")
+            })
+        }
+    },)
     const logo = process.env["LOGO_URL"];
-    console.log("hi" + logo)
     return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.optionBar}>
+        <SafeAreaView style={tabs.container}>
+            <SearchBar/>
+            <View style={tabs.optionBar}>
                 <OptionBox title={"Đây"} src={logo}/>
                 <OptionBox title={"Là"} src={logo}/>
                 <OptionBox title={"Lan"} src={logo}/>
                 <OptionBox title={"Trần ."} src={logo}/>
             </View>
+            <MainContentArea data={userData}/>
         </SafeAreaView>
     );
 }
-const styles = StyleSheet.create({
-    optionBar: {
-        flex: 0.2, flexDirection: "row",
-    },
-    container: {
-        flex: 1,
-        paddingTop: Constants.statusBarHeight
-    }
-
-});
 export default MainTab;

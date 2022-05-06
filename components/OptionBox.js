@@ -14,12 +14,14 @@ const styles = StyleSheet.create({
         alignItems:"center"
     },
     image : {
-        width:65,
-        height:65,
+        width:50,
+        height:50,
         borderRadius:12
     },
     title:{
-        color:"gray"
+        color:"white",
+        fontSize:12,
+        marginTop:8,
     }
 
 });

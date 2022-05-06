@@ -3,17 +3,39 @@ import {Text} from "react-native";
 import {TextInput} from "react-native";
 import {Image} from "react-native";
 import {TouchableOpacity} from "react-native";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import * as SecureStore from 'expo-secure-store';
+import axios from "axios";
+
 const logo_link = process.env["LOGO_URL"];
+const createToken = async (token) => {
+    await SecureStore.setItemAsync("token", "Bearer " + token)
+}
 const Login = ({navigation}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const submit = () => {
-        if(username==="") alert("Nhập user name")
-        else if(password==="") alert("Nhập password")
+    const submit = async () => {
+        if (username === "") alert("Nhập user name")
+        else if (password === "") alert("Nhập password")
         else {
-            alert("Login Successfully")
-            navigation.navigate("Home")
+            axios({
+                baseURL: process.env.API_URL,
+                method: 'POST',
+                url: '/login',
+                data: {
+                    "email": username,
+                    "password": password,
+                }
+            }).then(function (response) {
+                console.log(response.data)
+                createToken(response.data.token)
+                navigation.navigate("Home")
+            }).catch(function (errors) {
+                console.log(errors)
+                alert("Sai tên đang nhập hoặc mật khẩu")
+            })
+
+
         }
     }
     return (
@@ -24,7 +46,7 @@ const Login = ({navigation}) => {
             />
             <TextInput
                 style={styles.textInput}
-                placeholder={"Tên tài khoản"}
+                placeholder={"Email"}
                 onChangeText={newText => setUsername(newText)}
             />
             <TextInput
@@ -34,17 +56,18 @@ const Login = ({navigation}) => {
                 onChangeText={newText => setPassword(newText)}
             />
             <TouchableOpacity
-                onPress={()=>{
-                    submit()
-                }}
+                onPress={
+                    async () => {
+                        await submit()
+                    }}
             >
                 <Text style={styles.loginTxt}>
                     ĐĂNG NHẬP
                 </Text>
             </TouchableOpacity>
             <View style={styles.rows}>
-                <Text style={{fontSize:18,color: "white"}}>TẠO TÀI KHOẢN</Text>
-                <Text style={{fontSize:18,color: "white"}}>QUÊN MẬT KHẨU</Text>
+                <Text style={{fontSize: 18, color: "white"}}>TẠO TÀI KHOẢN</Text>
+                <Text style={{fontSize: 18, color: "white"}}>QUÊN MẬT KHẨU</Text>
             </View>
         </View>
     )
@@ -59,7 +82,7 @@ const styles = StyleSheet.create({
         padding: 20
     },
     textInput: {
-        fontSize: 20,
+        fontSize: 18,
         padding: 15,
         marginBottom: 15,
         backgroundColor: "white",
@@ -81,12 +104,12 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 18,
     },
-    rows:{
-        flexDirection:"row",
-        width:"100%",
-        padding:10,
-        justifyContent:"space-between",
-        alignItems:"stretch",
+    rows: {
+        flexDirection: "row",
+        width: "100%",
+        padding: 10,
+        justifyContent: "space-between",
+        alignItems: "stretch",
     },
 })
 export default Login;
