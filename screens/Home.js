@@ -20,6 +20,7 @@ const Home = ({navigation}) =>{
                     tabBarActiveTintColor: '#830252',
                     tabBarInactiveTintColor: 'gray',
                 })}
+
             >
                 <Tab.Screen
                     name="MainTab"
@@ -43,6 +44,9 @@ const Home = ({navigation}) =>{
                 <Tab.Screen
                     name="CategoryTab"
                     component={CategoryTab}
+                    initialParams={{
+                        navHome:{navigation},
+                    }}
                     options={{
                         headerShown: false,
                         tabBarLabel: "Danh mục",
@@ -60,6 +64,9 @@ const Home = ({navigation}) =>{
                 <Tab.Screen
                     name="UserTab"
                     component={UserTab}
+                    initialParams={{
+                        navHome:{navigation},
+                    }}
                     options={{
                         headerShown: false,
                         tabBarLabel: "Tôi",
@@ -77,6 +84,9 @@ const Home = ({navigation}) =>{
                 <Tab.Screen
                     name="SettingTab"
                     component={SettingTab}
+                    initialParams={{
+                        navHome:{navigation},
+                    }}
                     options={{
 
                         headerShown: false,

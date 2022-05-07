@@ -9,29 +9,31 @@ import * as SecureStore from 'expo-secure-store';
 import axios, {Axios} from "axios";
 
 const MainTab = ({route, navigation}) => {
-    const [userData,setUserData]=useState({})
-    useEffect(async () => {
-        const token = await SecureStore.getItemAsync("token");
-        console.log(token)
-        if (token == null) {
-            route.params.navHome.navigation.navigate("Login")
-        } else {
-            console.log(process.env.API_URL)
-            axios({
-                baseURL: process.env.API_URL,
-                method: 'GET',
-                url: 'user',
-                headers: {
-                    "Authorization": token,
-                }
-            }).then(function (response) {
-                console.log(response.data);
-                setUserData(response.data)
-            }).catch(function (){
-                route.params.navHome.navigation.navigate("Login")
-            })
+    route.params.navHome.navigation.addListener(
+        'focus',
+         async ()=>{
+             const token = await SecureStore.getItemAsync("token");
+             if (token == null) {
+                 route.params.navHome.navigation.navigate("Login")
+             } else {
+                 console.log(process.env.API_URL)
+                 axios({
+                     baseURL: process.env.API_URL,
+                     method: 'GET',
+                     url: 'user',
+                     headers: {
+                         "Authorization": token,
+                     }
+                 }).then(function (response) {
+                     console.log(response.data);
+                     setUserData(response.data)
+                 }).catch(function (){
+                     route.params.navHome.navigation.navigate("Login")
+                 })
+             }
         }
-    },)
+    );
+    const [userData,setUserData]=useState({})
     const logo = process.env["LOGO_URL"];
     return (
         <SafeAreaView style={tabs.container}>
