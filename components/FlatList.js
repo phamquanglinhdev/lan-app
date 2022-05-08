@@ -5,9 +5,19 @@ const FlatList = (props) => {
     return (
         <View style={styles.container}>
             <View style={styles.rows}>
-                <Text style={styles.text}>
-                    {props.title}
-                </Text>
+                <View style={{flexDirection: "row"}}>
+                    <Ionicons
+                        name={props.icons}
+                        size={24}
+                        color={"#830252"}
+                        style={{
+                            paddingRight:5,
+                        }}
+                    />
+                    <Text style={styles.text}>
+                        {props.title}
+                    </Text>
+                </View>
                 <Ionicons
                     name="caret-forward"
                     size={24}
@@ -20,13 +30,14 @@ const FlatList = (props) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "white",
+        padding:5,
         paddingTop: 6,
         paddingBottom: 6,
-        borderBottomWidth:0.5,
+        borderWidth:1,
         borderStyle:"dashed",
         // paddingBottom:1,
-        // marginBottom:10,
-        borderBottomColor:"#ad076b",
+        marginBottom:10,
+        borderColor:"#ad076b",
     },
     rows: {
         flexDirection: "row",
