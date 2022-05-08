@@ -5,6 +5,7 @@ import Home from "./screens/Home";
 import Test from "./screens/Test";
 import Login from "./screens/Login";
 import {LogBox} from "react-native";
+import Register from "./screens/Register";
 
 const Stack = createNativeStackNavigator();
 const App = () => {
@@ -26,6 +27,11 @@ const App = () => {
                    <Stack.Screen
                        name={"Login"}
                        component={Login}
+                       options={{headerShown: false}}
+                   />
+                   <Stack.Screen
+                       name={"Register"}
+                       component={Register}
                        options={{headerShown: false}}
                    />
                </Stack.Navigator>

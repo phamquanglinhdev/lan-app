@@ -66,14 +66,20 @@ const Login = ({navigation}) => {
                 </Text>
             </TouchableOpacity>
             <View style={styles.rows}>
-                <Text style={{fontSize: 18, color: "white"}}>TẠO TÀI KHOẢN</Text>
+                <TouchableOpacity
+                    onPress={()=>{
+                        navigation.navigate("Register");
+                    }}
+                >
+                    <Text style={{fontSize: 18, color: "white"}}>TẠO TÀI KHOẢN</Text>
+                </TouchableOpacity>
                 <Text style={{fontSize: 18, color: "white"}}>QUÊN MẬT KHẨU</Text>
             </View>
         </View>
     )
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
